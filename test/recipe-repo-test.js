@@ -14,9 +14,9 @@ describe('Recipe Repository', () => {
     expect(RecipeRepository).to.be.a('function')
   })
 
-  // it('should be an instance of Recipe Repository', () => {
-  //   expect(recipeRepository).to.be.an.instanceof(RecipeRepository)
-  // })
+  it('should be an instance of Recipe Repository', () => {
+    expect(recipeRepository).to.be.an.instanceof(RecipeRepository)
+  })
 
   
 
