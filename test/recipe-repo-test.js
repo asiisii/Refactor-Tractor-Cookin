@@ -10,9 +10,9 @@ describe('Recipe Repository', () => {
     recipeRepository = new RecipeRepository()
   })
 
-  // it('should be a function', () => {
-  //   expect(RecipeRepository).to.be.a('function')
-  // })
+  it('should be a function', () => {
+    expect(RecipeRepository).to.be.a('function')
+  })
 
   // it('should be an instance of Recipe Repository', () => {
   //   expect(recipeRepository).to.be.an.instanceof(RecipeRepository)
