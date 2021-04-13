@@ -26,6 +26,13 @@ describe('Recipe Repository', () => {
     expect(filteredRecipe[0].id).to.be.equal(678353)
   })
 
+  it.only('should filter by multiple tags and return recipe', () => {
+    filteredRecipe = recipeRepository.filterByTag(["antipasti", "snack"])
+    expect(filteredRecipe[0].id).to.be.equal(595736)
+    filteredRecipe = recipeRepository.filterByTag(["lunch", "dinner"])
+    expect(filteredRecipe[0].id).to.be.equal(678353)
+  })
+
 
 
 })
