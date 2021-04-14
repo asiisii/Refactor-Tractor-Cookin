@@ -11,9 +11,9 @@ class RecipeRepository {
     return this.recipes.filter(recipe => recipe.name === recipeName)
   }
 
-  // filterByIngredient() {
-
-  // }
+  filterByIngredient(ingredientName) {
+    return this.recipes.filter(recipe => recipe.ingredients.some(ingredient => ingredient.name.includes(ingredientName)))
+  }
 }
 
 if (typeof module !== 'undefined') {
