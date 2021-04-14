@@ -16,6 +16,5 @@ class RecipeRepository {
   }
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = RecipeRepository;
-}
+export default RecipeRepository;
+
