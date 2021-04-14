@@ -8,7 +8,7 @@ class RecipeRepository {
   }
 
   filterByName(recipeName) {
-    return this.recipes.filter(recipe => recipe.name === recipeName)
+    return this.recipes.filter(recipe => recipe.name.includes(recipeName))
   }
 
   filterByIngredient(ingredientName) {
