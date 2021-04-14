@@ -9,6 +9,10 @@ class Recipe {
     this.ingredientsData = ingredientsData;
   }
 
+  getIngredientsName() {
+    return this.ingredients.map(ingredient => ingredient.name)
+  }
+  
   calculateCost() {
     let costCounter = 0;
     this.ingredients.forEach(ingredient => {
@@ -23,7 +27,7 @@ class Recipe {
   }
 
   getInstructions() {
-    return this.instructions.map(instruction => instruction)
+    return this.instructions
   }
 
 }
