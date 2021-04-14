@@ -3,7 +3,6 @@ import { expect } from 'chai';
 import Recipe from '../src/recipe.js';
 import recipeData from '../src/data/recipes.js';
 import ingredientsData from '../src/data/ingredients.js';
-// import recipeData from '../src/data/sampledata';
 
 let recipe;
 
@@ -59,6 +58,38 @@ describe('Recipe', () => {
         "instruction": "Season the pork chops with salt and pepper and grill or pan fry over medium high heat until cooked, about 3-5 minutes per side. (If grilling, baste the chops in the maple dijon apple cider sauce as you grill.)Meanwhile, mix the remaining ingredients except the apple slices, bring to a simmer and cook until the sauce thickens, about 2-5 minutes.Grill or saute the apple slices until just tender but still crisp.Toss the pork chops and apple slices in the maple dijon apple cider sauce and enjoy!"
       }
     ])
+  })
+
+  it.only('Should return name of ingredients needed', () => {
+    recipe = new Recipe(recipeData[0], ingredientsData);
+    expect(recipe.getIngredientsName()).to.deep.equal([
+      "all purpose flour", 
+      "baking soda",
+      "egg",
+      "granulated sugar",
+      "instant vanilla pudding mix",
+      "light brown sugar",
+      "salt",
+      "sea salt",
+      "semisweet chocolate chips",
+      "unsalted butter",
+      "vanilla extract"
+    ]);
+    recipe = new Recipe(recipeData[1], ingredientsData);
+    expect(recipe.getIngredientsName()).to.deep.equal([
+      "apple cider",
+      "apples",
+      "cornstarch",
+      "dijon mustard",
+      "garlic",
+      "grainy mustard",
+      "maple syrup",
+      "Miso Soybean Paste",
+      "pork chops",
+      "salt and pepper",
+      "soy sauce",
+      "sriracha"
+    ]);
   })
 
 });
