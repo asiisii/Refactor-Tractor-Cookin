@@ -2,18 +2,21 @@ import './css/base.scss';
 import './css/styles.scss';
 
 import recipeData from './data/recipes';
-import ingredientData from './data/ingredients';
+import ingredientsData from './data/ingredients';
 import users from './data/users';
 
 import Pantry from './pantry';
 import Recipe from './recipe';
+import RecipeRepository from './recipe-repo';
 import User from './user';
 import Cookbook from './cookbook';
 
 let favButton = document.querySelector('.view-favorites');
-let homeButton = document.querySelector('.home')
+let homeButton = document.querySelector('.home');
+let searchInput = document.getElementById('search-input');
 let cardArea = document.querySelector('.all-cards');
 let cookbook = new Cookbook(recipeData);
+let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
 
 window.onload = onStartup();
@@ -21,7 +24,7 @@ window.onload = onStartup();
 homeButton.addEventListener('click', cardButtonConditionals);
 favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
-
+searchInput.addEventListener('keyup', searchRecipe);
 function onStartup() {
   let userId = (Math.floor(Math.random() * 49) + 1)
   let newUser = users.find(user => {
@@ -166,3 +169,21 @@ function populateCards(recipes) {
   })
   getFavorites();
 };
+
+function searchRecipe() {
+  cardArea.innerHTML = '';
+  var searchResults = [];
+  var searchValue = searchInput.value.toUpperCase();
+  cookbook.recipes.forEach(recipe => {
+    if (recipe.name.toUpperCase().includes(searchValue) 
+    || recipe.ingredients.find(ingredient => ingredient.name.toUpperCase().includes(searchValue)) 
+    // || recipe.tags.find(tag => recipe.tags.includes(searchValue))
+    ) {
+      searchResults.push(recipe);
+    }
+
+  })
+
+  populateCards(searchResults)
+}
+

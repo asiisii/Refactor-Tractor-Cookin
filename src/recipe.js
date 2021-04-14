@@ -2,12 +2,17 @@ class Recipe {
   constructor(recipe, ingredientsData) {
     this.name = recipe.name;
     this.id = recipe.id;
+    this.image = recipe.image;
     this.ingredients = recipe.ingredients;
     this.instructions = recipe.instructions;
     this.tags = recipe.tags;
     this.ingredientsData = ingredientsData;
   }
 
+  getIngredientsName() {
+    return this.ingredients.map(ingredient => ingredient.name)
+  }
+  
   calculateCost() {
     let costCounter = 0;
     this.ingredients.forEach(ingredient => {
@@ -19,6 +24,10 @@ class Recipe {
       })
     });
     return costCounter;
+  }
+
+  getInstructions() {
+    return this.instructions
   }
 
 }
