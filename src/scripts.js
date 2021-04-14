@@ -187,19 +187,3 @@ function searchRecipe() {
   populateCards(searchResults)
 }
 
-// function searchRecipe() {
-//   cardArea.innerHTML = '';
-//   var searchResults = [];
-//   var searchValue = searchInput.value.toUpperCase();
-//   cookbook.recipes.forEach(recipe => {
-//     if (reciperepo.filterByName(searchValue)
-//     || reciperepo.filterByIngredient(searchValue)
-//     || reciperepo.filterByTag(searchValue)
-//     ) {
-//       searchResults.push(recipe);
-//     }
-
-//   })
-
-//   populateCards(searchResults)
-// }
