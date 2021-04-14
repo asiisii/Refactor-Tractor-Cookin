@@ -1,6 +1,5 @@
 class RecipeRepository {
   constructor(data) {
-    // console.log(data);
     this.recipes = data;
   }
 
@@ -8,9 +7,9 @@ class RecipeRepository {
     return this.recipes.filter(recipe => tags.every(tag => recipe.tags.includes(tag)))
   }
 
-  // filterByName() {
-
-  // }
+  filterByName(recipeName) {
+    return this.recipes.filter(recipe => recipe.name === recipeName)
+  }
 
   // filterByIngredient() {
 
