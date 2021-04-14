@@ -21,9 +21,7 @@ describe('Recipe Repository', () => {
 
   it.only('should filter by a tag and return recipe', () => {
     filteredRecipe = recipeRepository.filterByTag(["antipasti"])
-    // console.log(filteredRecipe);
     expect(filteredRecipe[0].id).to.be.equal(595736)
-    // expect(filteredRecipe[1].id).to.be.equal(678353)
     filteredRecipe = recipeRepository.filterByTag(["lunch"])
     expect(filteredRecipe[0].id).to.be.equal(678353)
   })
@@ -41,9 +39,12 @@ describe('Recipe Repository', () => {
     filteredRecipe = recipeRepository.filterByName("Maple Dijon Apple Cider Grilled Pork Chops")
     expect(filteredRecipe[0].id).to.be.equal(678353)
   })
-  
-  
 
-
+  it.only('should filter by an ingredient and return recipe', () => {
+    filteredRecipe = recipeRepository.filterByIngredient("all purpose flour")
+    expect(filteredRecipe[0].id).to.be.equal(595736)
+    filteredRecipe = recipeRepository.filterByIngredient("apples")
+    expect(filteredRecipe[0].id).to.be.equal(678353)
+  })
 
 })
