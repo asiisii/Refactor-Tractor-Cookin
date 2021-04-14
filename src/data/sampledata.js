@@ -245,7 +245,7 @@ let sampleRecipeData = [
   }
 ]
 
-let recipeData = [
+let recipeData1 = [
   {
     "name": "Loaded Chocolate Chip Pudding Cookie Cups",
     "id": 595736,
