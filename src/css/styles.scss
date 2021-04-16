@@ -11,26 +11,24 @@ $black-color: #000;
 html {
   background-color: #37515C;
   @include border(2px);
-  height: 100vh;
 }
 
 body {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  margin: auto;
 }
 
 .main-header {
   background-color: $tan-color;
-  @include border(2px);
   display: flex;
   height: auto;
+  @include border(2px);
   justify-content: space-between;
   width: 100%;
 }
 
-/* *** iPhone *** */
-@media screen and (min-device-width: 320px) {
+/* *** iPhone 5/SE *** */
+@media screen and (min-width: 320px) {
   .navButton {
     background-color: $tan-color;
     border-left: 1px solid $black-color;
@@ -42,8 +40,8 @@ body {
   h1 {
     border-right: 2px solid $black-color;
     font-size: 255%;
-    margin-top: 0;
     margin-bottom: 0;
+    margin-top: 0;
     padding-top: 10px;
     text-align: center;
     width: 30%;
@@ -66,15 +64,15 @@ body {
   .search-button {
     background-color: $tan-color;
     @include border(1px);
-    width: 20%;
     height: 58px;
     margin-top: 3px;
+    width: 20%;
   }
 
-  .search-image:hover,
   .card-button:hover,
   .navButton:hover,
-  .search-button:hover {
+  .search-button:hover,
+  .search-image:hover {
     background-color: #cff2da;
   }
 
@@ -86,9 +84,9 @@ body {
   }
 
   .search-input {
-    @include border(1px);
     font-size: 100%;
     height: 7vh;
+    @include border(1px);
     margin: 3px 7px 0px 0px;
     padding-left: 10px;
     width: 90%;
@@ -107,12 +105,8 @@ body {
   }
 
   .add {
-    width: 100%;
     height: 21px;
-  }
-
-  .hidden {
-    display: none;
+    width: 100%;
   }
 
   .favorite {
@@ -136,8 +130,9 @@ body {
   .card {
     background-color: #D7F2FE;
     @include border(3px);
-    width: 37rem;
     margin-top: 3rem;
+    padding-bottom: 5rem;
+    width: 37rem;
   }
 
   .card-header {
@@ -149,7 +144,6 @@ body {
 
   .all {
     grid-gap: 0px;
-    // grid-template-columns: repeat(1, 1fr);
     @include grid(1)
   }
 
@@ -166,7 +160,6 @@ body {
   }
 
   .recipe-name {
-
     display: block;
     font-size: 150%;
     text-align: center;
@@ -195,6 +188,10 @@ body {
     background-image: url(https://image.flaticon.com/icons/svg/148/148841.svg);
     background-repeat: no-repeat;
   }
+
+  .hidden {
+    display: none;
+  }
 }
 
 /* *** iPad *** */
@@ -203,12 +200,15 @@ body {
     display: grid;
     grid-gap: 30px;
     @include grid(2);
+    justify-items: center;
     padding: 30px 0 30px 30px;
   }
+
   .card {
     margin-top: 0;
     width: 20rem;
     height: 22rem;
+    padding-bottom: 0;
   }
 
   .card-picture {
@@ -221,28 +221,16 @@ body {
 /* *** Medium Desktop Window*** */
 @media screen and (min-device-width: 850px) {
   .all-cards {
-    display: grid;
-    grid-gap: 30px;
     @include grid(3);
-    padding: 30px 0 30px 30px;
     width: 95.5vw;
-  }
-  .card {
-    margin-top: 0;
-    width: 20rem;
-    height: 22rem;
-  }
-
-  .card-picture {
-    @include border(1px);
-    height: 200px;
-    margin: 10px 3% 8px 2.6%;
   }
 }
 
 /* *** Full Desktop Window*** */
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 1440px) {
   .all-cards {
     @include grid(4);
+    padding: 12px;
+    justify-items: center;
   }
 }
