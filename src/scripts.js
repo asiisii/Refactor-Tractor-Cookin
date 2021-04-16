@@ -1,38 +1,62 @@
 import './css/base.scss';
 import './css/styles.scss';
 
-import recipeData from './data/recipes';
-import ingredientsData from './data/ingredients';
-import users from './data/users';
-
 import Pantry from './pantry';
 import Recipe from './recipe';
 import RecipeRepository from './recipe-repo';
 import User from './user';
 import Cookbook from './cookbook';
 
+
 let favButton = document.querySelector('.view-favorites');
 let homeButton = document.querySelector('.home');
 let searchInput = document.getElementById('search-input');
 let cardArea = document.querySelector('.all-cards');
-let cookbook = new Cookbook(recipeData);
-let reciperepo = new RecipeRepository(recipeData);
+// let cookbook = new Cookbook(recipeData);
+// let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
 
-window.onload = onStartup();
+window.onload = getApi();
 
 homeButton.addEventListener('click', cardButtonConditionals);
 favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
 searchInput.addEventListener('keyup', searchRecipe);
-function onStartup() {
+
+
+
+function getApi() {
+  const users = fetch('http://localhost:3001/api/v1/users')
+    .then(response => response.json())
+    .then(data => data)
+    .catch(err => console.log('rejected:', err.message)); 
+
+const ingredientsData = fetch('http://localhost:3001/api/v1/ingredients')
+    .then(response => response.json())
+    .then(data => {
+        return data
+    })
+    .catch(err => console.log('rejected:', err.message)); 
+
+const recipeData = fetch('http://localhost:3001/api/v1/recipes')
+    .then(response => response.json())
+    .then(data => data)
+    .catch(err => console.log('rejected:', err.message)); 
+
+    Promise.all([recipeData, ingredientsData, users])
+      .then(data => onStartup(data[2], data[0]));
+}
+
+function onStartup(users, recipe) {
+  console.log(recipe);
   let userId = (Math.floor(Math.random() * 49) + 1)
   let newUser = users.find(user => {
     return user.id === Number(userId);
   });
+  
   user = new User(userId, newUser.name, newUser.pantry)
   pantry = new Pantry(newUser.pantry)
-  populateCards(cookbook.recipes);
+  populateCards(recipe);
   greetUser();
 }
 
@@ -186,4 +210,3 @@ function searchRecipe() {
 
   populateCards(searchResults)
 }
-
