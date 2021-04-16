@@ -17,7 +17,7 @@ let cardArea = document.querySelector('.all-cards');
 // let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
 
-// window.onload = getApi();
+window.onload = onStartup();
 
 homeButton.addEventListener('click', cardButtonConditionals);
 favButton.addEventListener('click', viewFavorites);
@@ -25,7 +25,7 @@ cardArea.addEventListener('click', cardButtonConditionals);
 searchInput.addEventListener('keyup', searchRecipe);
 
 
-console.log(apiData())
+
 // function getApi() {
 //   const users = fetch('http://localhost:3001/api/v1/users')
 //     .then(response => response.json())
@@ -43,17 +43,18 @@ console.log(apiData())
 //       .then(data => onStartup(data[2], data[0]));
 // }
 
-function onStartup(users, recipe) {
-  console.log(recipe);
-  let userId = (Math.floor(Math.random() * 49) + 1)
-  let newUser = users.find(user => {
-    return user.id === Number(userId);
+function onStartup() {
+  apiData()
+  .then(data => {
+    let userId = (Math.floor(Math.random() * 49) + 1)
+    let newUser = data.users.find(user => {
+      return user.id === Number(userId);
+    });
+    user = new User(userId, newUser.name, newUser.pantry)
+    pantry = new Pantry(newUser.pantry)
+    populateCards(data.recipeData);
+    greetUser();
   });
-  
-  user = new User(userId, newUser.name, newUser.pantry)
-  pantry = new Pantry(newUser.pantry)
-  populateCards(recipe);
-  greetUser();
 }
 
 function viewFavorites() {
