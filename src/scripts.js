@@ -5,7 +5,6 @@ import Pantry from './pantry';
 import Recipe from './recipe';
 import RecipeRepository from './recipe-repo';
 import User from './user';
-import Cookbook from './cookbook';
 import { apiData } from './data/fetchedData';
 
 
@@ -14,7 +13,7 @@ let homeButton = document.querySelector('.home');
 let searchInput = document.getElementById('search-input');
 let cardArea = document.querySelector('.all-cards');
 // let cookbook = new Cookbook(recipeData);
-// let reciperepo = new RecipeRepository(recipeData);
+let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
 
 window.onload = onStartup();
@@ -23,25 +22,6 @@ homeButton.addEventListener('click', cardButtonConditionals);
 favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
 searchInput.addEventListener('keyup', searchRecipe);
-
-
-
-// function getApi() {
-//   const users = fetch('http://localhost:3001/api/v1/users')
-//     .then(response => response.json())
-//     .catch(err => console.log('rejected:', err.message)); 
-
-// const ingredientsData = fetch('http://localhost:3001/api/v1/ingredients')
-//     .then(response => response.json())
-//     .catch(err => console.log('rejected:', err.message)); 
-
-// const recipeData = fetch('http://localhost:3001/api/v1/recipes')
-//     .then(response => response.json())
-//     .catch(err => console.log('rejected:', err.message)); 
-
-//     Promise.all([recipeData, ingredientsData, users])
-//       .then(data => onStartup(data[2], data[0]));
-// }
 
 function onStartup() {
   apiData()
