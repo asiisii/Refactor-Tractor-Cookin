@@ -1,30 +1,59 @@
 import { expect } from 'chai';
 
 import Recipe from '../src/recipe.js';
-import recipeData from '../src/data/recipes.js';
-import ingredientsData from '../src/data/ingredients.js';
+import {sampleRecipeData, sampleIngredientsData} from '../src/data/sampledata.js';
 
 let recipe;
 
 describe('Recipe', () => {
   beforeEach(() => {
-    recipe = new Recipe(recipeData[47], ingredientsData);
+    recipe = new Recipe(sampleRecipeData[0], sampleIngredientsData);
   })
 
-  it.only('Should hold its own ingredient data', () => {
-    expect(recipe.ingredients).to.equal(recipeData[47].ingredients);
+  it('Should hold its own name data', () => {
+    expect(recipe.name).to.equal(sampleRecipeData[0].name);
+    recipe = new Recipe(sampleRecipeData[1], sampleIngredientsData);
+    expect(recipe.name).to.equal(sampleRecipeData[1].name);
   })
 
-  it.only('Should hold its own instruction data', () => {
-    expect(recipe.instructions).to.equal(recipeData[47].instructions);
+  it('Should hold its own id data', () => {
+    expect(recipe.id).to.equal(sampleRecipeData[0].id);
+    recipe = new Recipe(sampleRecipeData[1], sampleIngredientsData);
+    expect(recipe.id).to.equal(sampleRecipeData[1].id);
+  })
+  it('Should hold its own image data', () => {
+    expect(recipe.image).to.equal(sampleRecipeData[0].image);
+    recipe = new Recipe(sampleRecipeData[1], sampleIngredientsData);
+    expect(recipe.image).to.equal(sampleRecipeData[1].image);
   })
 
-  it.only('Should be able to calculate the cost of its ingredients', () => {
-    expect(recipe.calculateCost()).to.equal(4166);
+  it('Should hold its own ingredient data', () => {
+    expect(recipe.ingredients).to.equal(sampleRecipeData[0].ingredients);
+    recipe = new Recipe(sampleRecipeData[1], sampleIngredientsData);
+    expect(recipe.ingredients).to.equal(sampleRecipeData[1].ingredients);
   })
 
-  it.only('should return recipe\'s instructions', () => {
-    recipe = new Recipe(recipeData[0], ingredientsData);
+  it('Should hold its own instruction data', () => {
+    expect(recipe.instructions).to.equal(sampleRecipeData[0].instructions);
+    recipe = new Recipe(sampleRecipeData[1], sampleIngredientsData);
+    expect(recipe.instructions).to.equal(sampleRecipeData[1].instructions);
+  })
+
+  it('Should hold its own tags data', () => {
+    expect(recipe.tags).to.equal(sampleRecipeData[0].tags);
+    recipe = new Recipe(sampleRecipeData[1], sampleIngredientsData);
+    expect(recipe.tags).to.equal(sampleRecipeData[1].tags);
+  })
+
+  it('Should hold sample ingredients data', () => {
+    expect(recipe.ingredientsData).to.equal(sampleIngredientsData);
+  })
+
+  it('Should be able to calculate the cost of its ingredients', () => {
+    expect(recipe.calculateCost()).to.equal(16498.5);
+  })
+
+  it('should return recipe\'s instructions', () => {
     expect(recipe.getInstructions()).to.deep.equal([
       {
         "number": 1,
@@ -51,7 +80,7 @@ describe('Recipe', () => {
         "instruction": "Remove the pan from the oven and let sit for 10 minutes before removing onto a cooling rack.Top with ice cream and a drizzle of chocolate sauce."
       }
     ])
-    recipe = new Recipe(recipeData[1], ingredientsData);
+    recipe = new Recipe(sampleRecipeData[1], sampleIngredientsData);
     expect(recipe.getInstructions()).to.deep.equal([
       {
         "number": 1,
@@ -60,8 +89,7 @@ describe('Recipe', () => {
     ])
   })
 
-  it.only('Should return name of ingredients needed', () => {
-    recipe = new Recipe(recipeData[0], ingredientsData);
+  it('Should return name of ingredients needed', () => {
     expect(recipe.getIngredientsName()).to.deep.equal([
       "all purpose flour", 
       "baking soda",
@@ -75,7 +103,7 @@ describe('Recipe', () => {
       "unsalted butter",
       "vanilla extract"
     ]);
-    recipe = new Recipe(recipeData[1], ingredientsData);
+    recipe = new Recipe(sampleRecipeData[1], sampleIngredientsData);
     expect(recipe.getIngredientsName()).to.deep.equal([
       "apple cider",
       "apples",
