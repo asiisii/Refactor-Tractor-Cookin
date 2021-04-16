@@ -9,13 +9,16 @@ import Pantry from './pantry';
 import Recipe from './recipe';
 import RecipeRepository from './recipe-repo';
 import User from './user';
-import Cookbook from './cookbook';
+// import Cookbook from './cookbook';
+
+
+
 
 let favButton = document.querySelector('.view-favorites');
 let homeButton = document.querySelector('.home');
 let searchInput = document.getElementById('search-input');
 let cardArea = document.querySelector('.all-cards');
-let cookbook = new Cookbook(recipeData);
+// let cookbook = new Cookbook(recipeData);
 let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
 
@@ -25,6 +28,7 @@ homeButton.addEventListener('click', cardButtonConditionals);
 favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
 searchInput.addEventListener('keyup', searchRecipe);
+
 function onStartup() {
   let userId = (Math.floor(Math.random() * 49) + 1)
   let newUser = users.find(user => {
@@ -32,7 +36,7 @@ function onStartup() {
   });
   user = new User(userId, newUser.name, newUser.pantry)
   pantry = new Pantry(newUser.pantry)
-  populateCards(cookbook.recipes);
+  populateCards(reciperepo.recipes);
   greetUser();
 }
 
@@ -42,7 +46,7 @@ function viewFavorites() {
   }
   if (!user.favoriteRecipes.length) {
     favButton.innerHTML = 'You have no favorites!';
-    populateCards(cookbook.recipes);
+    populateCards(reciperepo.recipes);
     return
   } else {
     favButton.innerHTML = 'Refresh Favorites'
@@ -75,7 +79,7 @@ function greetUser() {
 }
 
 function favoriteCard(event) {
-  let specificRecipe = cookbook.recipes.find(recipe => {
+  let specificRecipe = reciperepo.recipes.find(recipe => {
     if (recipe.id  === Number(event.target.id)) {
       return recipe;
     }
@@ -97,13 +101,12 @@ function cardButtonConditionals(event) {
     displayDirections(event);
   } else if (event.target.classList.contains('home')) {
     favButton.innerHTML = 'View Favorites';
-    populateCards(cookbook.recipes);
+    populateCards(reciperepo.recipes);
   }
 }
 
-
 function displayDirections(event) {
-  let newRecipeInfo = cookbook.recipes.find(recipe => {
+  let newRecipeInfo = reciperepo.recipes.find(recipe => {
     if (recipe.id === Number(event.target.id)) {
       return recipe;
     }
@@ -170,20 +173,10 @@ function populateCards(recipes) {
   getFavorites();
 };
 
-function searchRecipe() {
+function searchRecipe(event) {
+  event.preventDefault()
   cardArea.innerHTML = '';
-  var searchResults = [];
-  var searchValue = searchInput.value.toUpperCase();
-  cookbook.recipes.forEach(recipe => {
-    if (recipe.name.toUpperCase().includes(searchValue) 
-    || recipe.ingredients.find(ingredient => ingredient.name.toUpperCase().includes(searchValue)) 
-    // || recipe.tags.find(tag => recipe.tags.includes(searchValue))
-    ) {
-      searchResults.push(recipe);
-    }
-
-  })
-
-  populateCards(searchResults)
+  let searchValue = searchInput.value.toLowerCase();
+  let getSearchResults = reciperepo.getRecipe(searchValue)
+  populateCards(getSearchResults)
 }
-
