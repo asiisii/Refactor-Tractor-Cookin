@@ -1,10 +1,13 @@
+import recipeData from "./data/recipes";
+import Recipe from "./recipe";
+
 class User {
   constructor(id, name, pantry) {
     this.id = id;
     this.name = name;
     this.pantry = pantry;
     this.favoriteRecipes = [];
-
+    this.recipesToCook = []
   }
 
   addToFavorites(recipe) {
@@ -15,7 +18,7 @@ class User {
 
   removeFromFavorites(recipe) {
     const i = this.favoriteRecipes.indexOf(recipe);
-    this.favoriteRecipes.splice(i, 1)
+    this.favoriteRecipes.splice(i, 1);
   }
 
   filterFavorites(tag) {
@@ -32,6 +35,10 @@ class User {
       });
     });
   }
+
+  cookRecipeThisWeek(recipe) {
+    this.recipesToCook.push(recipe)
+  };
 }
 
 

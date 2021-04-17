@@ -1,17 +1,15 @@
 import './css/base.scss';
 import './css/styles.scss';
-
 import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
 import users from './data/users';
-
 import Pantry from './pantry';
 import Recipe from './recipe';
 import RecipeRepository from './recipe-repo';
 import User from './user';
+
+import { apiData } from './data/fetchedData';
 // import Cookbook from './cookbook';
-
-
 
 
 let favButton = document.querySelector('.view-favorites');
@@ -30,15 +28,19 @@ cardArea.addEventListener('click', cardButtonConditionals);
 searchInput.addEventListener('keyup', searchRecipe);
 
 function onStartup() {
-  let userId = (Math.floor(Math.random() * 49) + 1)
-  let newUser = users.find(user => {
-    return user.id === Number(userId);
+  apiData()
+  .then(data => {
+    let userId = (Math.floor(Math.random() * 49) + 1)
+    let newUser = data.users.find(user => {
+      return user.id === Number(userId);
+    });
+    user = new User(userId, newUser.name, newUser.pantry)
+    pantry = new Pantry(newUser.pantry)
+    populateCards(data.recipeData);
+    greetUser();
   });
-  user = new User(userId, newUser.name, newUser.pantry)
-  pantry = new Pantry(newUser.pantry)
-  populateCards(reciperepo.recipes);
-  greetUser();
 }
+
 
 function viewFavorites() {
   if (cardArea.classList.contains('all')) {
@@ -174,9 +176,9 @@ function populateCards(recipes) {
 };
 
 function searchRecipe(event) {
-  event.preventDefault()
+  event.preventDefault();
   cardArea.innerHTML = '';
   let searchValue = searchInput.value.toLowerCase();
-  let getSearchResults = reciperepo.getRecipe(searchValue)
-  populateCards(getSearchResults)
+  let getSearchResults = reciperepo.getRecipe(searchValue);
+  populateCards(getSearchResults);
 }
