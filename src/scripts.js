@@ -19,6 +19,7 @@ let cardArea = document.querySelector('.all-cards');
 // let cookbook = new Cookbook(recipeData);
 let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
+let userForm = document.querySelector('.form')
 
 window.onload = onStartup();
 
@@ -26,6 +27,7 @@ homeButton.addEventListener('click', cardButtonConditionals);
 favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
 searchInput.addEventListener('keyup', searchRecipe);
+userForm.addEventListener('click', showUserForm);
 
 function onStartup() {
   apiData()
@@ -181,4 +183,8 @@ function searchRecipe(event) {
   let searchValue = searchInput.value.toLowerCase();
   let getSearchResults = reciperepo.getRecipe(searchValue);
   populateCards(getSearchResults);
+}
+
+function showUserForm() {
+  
 }
