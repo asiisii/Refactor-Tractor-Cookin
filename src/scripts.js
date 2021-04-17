@@ -19,7 +19,8 @@ let cardArea = document.querySelector('.all-cards');
 // let cookbook = new Cookbook(recipeData);
 let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
-let userForm = document.querySelector('.form')
+let userForm = document.querySelector('.form');
+let formArea = document.querySelector('.user-form');
 
 window.onload = onStartup();
 
@@ -37,7 +38,7 @@ function onStartup() {
       return user.id === Number(userId);
     });
     user = new User(userId, newUser.name, newUser.pantry)
-    pantry = new Pantry(newUser.pantry)
+    pantry = new Pantry(newUser.pantry);
     populateCards(data.recipeData);
     greetUser();
   });
@@ -46,12 +47,12 @@ function onStartup() {
 
 function viewFavorites() {
   if (cardArea.classList.contains('all')) {
-    cardArea.classList.remove('all')
+    cardArea.classList.remove('all');
   }
   if (!user.favoriteRecipes.length) {
     favButton.innerHTML = 'You have no favorites!';
     populateCards(reciperepo.recipes);
-    return
+    return;
   } else {
     favButton.innerHTML = 'Refresh Favorites'
     cardArea.innerHTML = '';
@@ -186,5 +187,20 @@ function searchRecipe(event) {
 }
 
 function showUserForm() {
-  
+  hide(cardArea);
+  show(formArea);
+  formArea.innerHTML += `
+  <label>Recipe Name: </label><input></input>
+  <label>ID: </label><input></input>
+  <label>Image URL: </label><input></input>
+  <label>Ingredients: </label><input></input>
+  <label>Instructions: </label><input></input>
+  `
 }
+
+function show(element) {
+  element.classList.remove('hidden');
+};
+function hide(element) {
+  element.classList.add('hidden');
+};
