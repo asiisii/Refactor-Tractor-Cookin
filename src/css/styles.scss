@@ -213,6 +213,11 @@ body {
     height: 200px;
     margin: 10px 3% 8px 2.6%;
   }
+
+  .all {
+    grid-gap: 0px;
+    @include grid(1)
+  }
 }
 
 /* *** Medium Desktop Window*** */
@@ -220,6 +225,11 @@ body {
   .all-cards {
     @include grid(3);
     width: 95.5vw;
+  }
+
+  .all {
+    grid-gap: 0px;
+    @include grid(1)
   }
 }
 
@@ -229,6 +239,11 @@ body {
     @include grid(4);
     padding: 12px;
     justify-items: center;
+  }
+
+  .all {
+    grid-gap: 0px;
+    @include grid(1)
   }
 }
 
