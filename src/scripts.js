@@ -24,7 +24,7 @@ let formArea = document.querySelector('.user-form');
 
 window.onload = onStartup();
 
-homeButton.addEventListener('click', cardButtonConditionals);
+homeButton.addEventListener('click', returnHome);
 favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
 searchInput.addEventListener('keyup', searchRecipe);
@@ -189,18 +189,17 @@ function searchRecipe(event) {
 function showUserForm() {
   hide(cardArea);
   show(formArea);
-  formArea.innerHTML += `
-  <label>Recipe Name: </label><input></input>
-  <label>ID: </label><input></input>
-  <label>Image URL: </label><input></input>
-  <label>Ingredients: </label><input></input>
-  <label>Instructions: </label><input></input>
-  `
+}
+
+function returnHome() {
+  hide(formArea);
+  show(cardArea);
 }
 
 function show(element) {
   element.classList.remove('hidden');
-};
+}
+
 function hide(element) {
   element.classList.add('hidden');
-};
+}
