@@ -1,0 +1,11 @@
+/* *** Colors *** */
+$header-color: #EBF5EE;
+$black-color: #000;
+
+@mixin border($px) {
+  border: $px solid $black-color;
+}
+
+@mixin grid($num) {
+  grid-template-columns: repeat($num, 1fr);
+}

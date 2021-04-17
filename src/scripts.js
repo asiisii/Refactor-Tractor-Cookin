@@ -21,6 +21,7 @@ let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
 let userForm = document.querySelector('.form');
 let formArea = document.querySelector('.user-form');
+// let cardDescription = document.querySelector('.all-cards all')
 
 window.onload = onStartup();
 

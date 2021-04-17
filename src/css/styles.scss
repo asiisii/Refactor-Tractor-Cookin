@@ -1,12 +1,4 @@
-$header-color: #EBF5EE;
-$black-color: #000;
-
-@mixin border($px) {
-  border: $px solid $black-color;
-}
-@mixin grid($num) {
-  grid-template-columns: repeat($num, 1fr);
-}
+@import '_variables.scss';
 
 html {
   background-color: #37515C;
@@ -34,6 +26,9 @@ body {
     border-right: 1px solid $black-color;
     font-size: 130%;
     margin: 1%;
+    &:hover {
+      background-color: #cff2da;
+    }
   }
 
   h1 {
@@ -66,13 +61,9 @@ body {
     height: 58px;
     margin-top: 3px;
     width: 20%;
-  }
-
-  .card-button:hover,
-  .navButton:hover,
-  .search-button:hover,
-  .search-image:hover {
-    background-color: #cff2da;
+    &:hover {
+      background-color: #cff2da;
+    }
   }
 
   .search-image:active,
@@ -95,6 +86,9 @@ body {
     @include border(1px);
     height: 27px;
     margin: 3px;
+    &:hover {
+      background-color: #cff2da;
+    }
   }
 
   .add-button {
@@ -164,10 +158,6 @@ body {
     text-align: center;
   }
 
-  .card-picture:hover {
-    opacity: 0.7;
-  }
-
   .card-picture:active {
     @include border(2px);
   }
@@ -175,6 +165,9 @@ body {
   .card-picture {
     @include border(1px);
     margin: 10px 3% 8px 2.6%;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   main {
