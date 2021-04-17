@@ -1,6 +1,8 @@
 import './css/base.scss';
 import './css/styles.scss';
-
+import recipeData from './data/recipes';
+import ingredientsData from './data/ingredients';
+import users from './data/users';
 import Pantry from './pantry';
 import Recipe from './recipe';
 import RecipeRepository from './recipe-repo';
@@ -37,6 +39,7 @@ function onStartup() {
     populateCards(data.recipeData);
     greetUser();
   });
+}
 
 
 function viewFavorites() {
@@ -173,9 +176,9 @@ function populateCards(recipes) {
 };
 
 function searchRecipe(event) {
-  event.preventDefault()
+  event.preventDefault();
   cardArea.innerHTML = '';
   let searchValue = searchInput.value.toLowerCase();
-  let getSearchResults = reciperepo.getRecipe(searchValue)
-  populateCards(getSearchResults)
+  let getSearchResults = reciperepo.getRecipe(searchValue);
+  populateCards(getSearchResults);
 }
