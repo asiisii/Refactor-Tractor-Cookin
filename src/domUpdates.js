@@ -28,11 +28,11 @@ export const domUpdate = {
     getFavorites();
     },
 
-    // getFavorites() {
-    //     if (user.favoriteRecipes.length) {
-    //         user.favoriteRecipes.forEach(recipe => {
-    //             document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active')
-    //         })
-    //     } else return
-    // }
+    getFavorites() {
+        if (user.favoriteRecipes.length) {
+            user.favoriteRecipes.forEach(recipe => {
+                document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active')
+            })
+        } else return
+    }
 };
