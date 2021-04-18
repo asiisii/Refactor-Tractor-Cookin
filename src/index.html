@@ -29,8 +29,19 @@
         <label class='form-name'>Recipe Name:</label><input placeholder='Recipe name'></input>
         <label>ID:</label><input placeholder='Recipe ID'></input>
         <label>Image URL:</label><input placeholder='Add an image URL'></input>
-        <label>Ingredients:</label><input placeholder='List ingredients and include name,id, and quantity'></input>
-        <label>Instructions:</label><input class='instructions' placeholder='Add all instructions'></input>
+        <label>Ingredients:</label><input placeholder='Name of ingredient'></input>
+        <input placeholder='Ingredient ID'></input>
+        <label>Quantity of Ingredients</label>
+        <input placeholder='Amount'></input>
+        <select name='units'>
+          <option value="">--Please choose a type of unit--</option>
+          <option value='tablespoon'>tablespoon</option>
+          <option value='teaspoon'>teaspoon</option>
+          <option value='cup'>cup</option>
+          <option value='ounce'>ounce</option>
+          <option value='serving'>serving</option>
+        </select>
+        <label>Instructions:</label><input class='instructions' placeholder='Add instructions'></input>
       </section>
     </main>
   </body>
