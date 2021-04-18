@@ -286,7 +286,38 @@ let sampleIngredientsData = [
     "estimatedCostInCents": 528
   }
 ]
+
+let sampleUserData = [
+  {
+    "id": 1,
+    "name": "Saige O'Kon",
+    "pantry": [
+      {
+        "ingredient": 11477,
+        "amount": 1
+      },
+      {
+        "ingredient": 93820,
+        "amount": 1
+      },
+      {
+        "ingredient": 11297,
+        "amount": 3
+      },
+      {
+        "ingredient": 11547,
+        "amount": 5
+      },
+      {
+        "ingredient": 1082047,
+        "amount": 5
+      }
+    ]
+  }
+]
+
 export {
   sampleRecipeData, 
-  sampleIngredientsData
+  sampleIngredientsData,
+  sampleUserData 
 }

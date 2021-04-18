@@ -10,6 +10,7 @@ import User from './user';
 
 import { apiData } from './data/fetchedData';
 // import Cookbook from './cookbook';
+import { postNewData } from './data/postedData';
 
 
 let favButton = document.querySelector('.view-favorites');
@@ -29,6 +30,7 @@ let formIngredientId = document.querySelector('#ingredientId');
 let formAmount = document.querySelector('#amount');
 let formUnit = document.querySelector('#unit');
 let formInstructions = document.querySelector('#instructions');
+let submitFormButton = document.querySelector('#recipeButton')
 
 window.onload = onStartup();
 
@@ -37,6 +39,7 @@ favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
 searchInput.addEventListener('keyup', searchRecipe);
 userForm.addEventListener('click', showUserForm);
+submitFormButton.addEventListener('click', postUserData);
 
 function onStartup() {
   apiData()
@@ -212,26 +215,33 @@ function hide(element) {
   element.classList.add('hidden');
 }
 
-function postUserData() {
-  const postData = {
-    'name': parseInt(formName.value),
-    'id': parseInt(formId.value),
-    'image': parseInt(formImage.value),
-    'ingredients': [
-      {
-        "name": parseInt(formIngredientName.value),
-        "id": parseInt(formIngredientId.value),
-        "quantity": {
-          "amount": parseInt(formAmount.value),
-          "unit": parseInt(formUnit.value),
-        }
-      }
-    ],
-    'instructions': [
-      {
-        'number': 1,
-        'instruction': parseInt(formInstructions.value),
-      }
-    ]
-  }
-}
+// function postUserData() {
+//   const postData = {
+//     'name': parseInt(formName.value),
+//     'id': parseInt(formId.value),
+//     'image': parseInt(formImage.value),
+//     'ingredients': [
+//       {
+//         "name": parseInt(formIngredientName.value),
+//         "id": parseInt(formIngredientId.value),
+//         "quantity": {
+//           "amount": parseInt(formAmount.value),
+//           "unit": parseInt(formUnit.value),
+//         }
+//       }
+//     ],
+//     'instructions': [
+//       {
+//         'number': 1,
+//         'instruction': parseInt(formInstructions.value),
+//       }
+//     ]
+//   }
+
+//   postNewData(postData)
+//   .then(response => response.json())  
+//   .then(json => {
+//     postedData.push(json);
+//   })
+//   .catch(err => console.log('rejected:', err.message));
+// }
