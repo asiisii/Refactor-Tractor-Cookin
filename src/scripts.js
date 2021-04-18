@@ -51,7 +51,7 @@ function viewFavorites() {
   }
   if (!user.favoriteRecipes.length) {
     favButton.innerHTML = 'You have no favorites!';
-    populateCards(reciperepo.recipes);
+    domUpdate.populateCards(reciperepo.recipes);
     return
   } else {
     favButton.innerHTML = 'Refresh Favorites'

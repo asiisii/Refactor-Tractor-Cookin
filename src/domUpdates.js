@@ -1,4 +1,9 @@
+import { apiData } from './data/fetchedData';
+import RecipeRepository from './recipe-repo';
+import Recipe from './recipe';
+
 let cardArea = document.querySelector('.all-cards');
+
 
 
 
@@ -32,6 +37,7 @@ export const domUpdate = {
     displayDirections(event) {
         apiData()
         .then(data => {
+            let reciperepo = new RecipeRepository(data.recipeData);
             let newRecipeInfo = reciperepo.recipes.find(recipe => {
                 if (recipe.id === Number(event.target.id)) {
                 return recipe;
