@@ -21,7 +21,14 @@ let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
 let userForm = document.querySelector('.form');
 let formArea = document.querySelector('.user-form');
-// let cardDescription = document.querySelector('.all-cards all')
+let formName = document.querySelector('#recipeName');
+let formId = document.querySelector('#recipeId');
+let formImage = document.querySelector('#image');
+let formIngredientName = document.querySelector('#ingredientName');
+let formIngredientId = document.querySelector('#ingredientId');
+let formAmount = document.querySelector('#amount');
+let formUnit = document.querySelector('#unit');
+let formInstructions = document.querySelector('#instructions');
 
 window.onload = onStartup();
 
@@ -205,4 +212,26 @@ function hide(element) {
   element.classList.add('hidden');
 }
 
-//toggle
+function postUserData() {
+  const postData = {
+    'name': parseInt(formName.value),
+    'id': parseInt(formId.value),
+    'image': parseInt(formImage.value),
+    'ingredients': [
+      {
+        "name": parseInt(formIngredientName.value),
+        "id": parseInt(formIngredientId.value),
+        "quantity": {
+          "amount": parseInt(formAmount.value),
+          "unit": parseInt(formUnit.value),
+        }
+      }
+    ],
+    'instructions': [
+      {
+        'number': 1,
+        'instruction': parseInt(formInstructions.value),
+      }
+    ]
+  }
+}

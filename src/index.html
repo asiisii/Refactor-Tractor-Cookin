@@ -26,14 +26,14 @@
       <section class='all-cards'>
       </section>
       <section class='user-form hidden'>
-        <label class='form-name'>Recipe Name:</label><input placeholder='Recipe name'></input>
-        <label>ID:</label><input placeholder='Recipe ID'></input>
-        <label>Image URL:</label><input placeholder='Add an image URL'></input>
-        <label>Ingredients:</label><input placeholder='Name of ingredient'></input>
-        <input placeholder='Ingredient ID'></input>
+        <label class='form-name'>Recipe Name:</label><input placeholder='Recipe name' id='recipeName'></input>
+        <label>ID:</label><input placeholder='Recipe ID' id='recipeId'></input>
+        <label>Image URL:</label><input placeholder='Add an image URL' id='image'></input>
+        <label>Ingredients:</label><input placeholder='Name of ingredient' id='ingredientName' id='ingredientName'></input>
+        <input placeholder='Ingredient ID' id='ingredientId'></input>
         <label>Quantity of Ingredients</label>
-        <input placeholder='Amount'></input>
-        <select name='units'>
+        <input placeholder='Amount' id='amount'></input>
+        <select name='units' id='unit'>
           <option value="">--Please choose a type of unit--</option>
           <option value='tablespoon'>tablespoon</option>
           <option value='teaspoon'>teaspoon</option>
@@ -41,7 +41,10 @@
           <option value='ounce'>ounce</option>
           <option value='serving'>serving</option>
         </select>
-        <label>Instructions:</label><input class='instructions' placeholder='Add instructions'></input>
+        <label>Instructions:</label><input class='instructions' placeholder='Add instructions' id='instructions'></input>
+        <div class="button-container">
+          <button class="recipe-button">Add Recipe</button>
+        </div>
       </section>
     </main>
   </body>
