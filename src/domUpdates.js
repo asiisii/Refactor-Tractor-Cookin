@@ -2,8 +2,8 @@ import { apiData } from './data/fetchedData';
 import RecipeRepository from './recipe-repo';
 import Recipe from './recipe';
 
-let cardArea = document.querySelector('.all-cards');
 
+let cardArea = document.querySelector('.all-cards');
 
 
 
@@ -57,10 +57,11 @@ export const domUpdate = {
             let ingredientsSpan = document.querySelector('.ingredients');
             let instructionsSpan = document.querySelector('.instructions');
             recipeObject.ingredients.forEach(ingredient => {
-            ingredientsSpan.insertAdjacentHTML('afterbegin', `<ul><li>
-            ${ingredient.quantity.amount.toFixed(2)} ${ingredient.quantity.unit}
-            ${ingredient.name}</li></ul>
-            `)
+                let ingredientName = data.ingredientsData.find(ingre => (ingre.id === ingredient.id));
+                ingredientsSpan.insertAdjacentHTML('afterbegin', `<ul><li>
+                ${ingredient.quantity.amount.toFixed(2)} ${ingredient.quantity.unit}
+                ${ingredientName.name}</li></ul>
+                `)
             })
             recipeObject.instructions.forEach(instruction => {
                 instructionsSpan.insertAdjacentHTML('beforebegin', `<li>
@@ -74,5 +75,39 @@ export const domUpdate = {
         const userName = document.querySelector('.user-name');
         userName.innerHTML =
         user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0];
+    },
+
+    viewFavorites(user) {
+        console.log(user);
+        if (cardArea.classList.contains('all')) {
+            cardArea.classList.remove('all')
+        }
+        if (!user.favoriteRecipes.length) {
+            favButton.innerHTML = 'You have no favorites!';
+            domUpdate.populateCards(reciperepo.recipes);
+            return
+        } else {
+            favButton.innerHTML = 'Refresh Favorites'
+            cardArea.innerHTML = '';
+            user.favoriteRecipes.forEach(recipe => {
+            cardArea.insertAdjacentHTML('afterbegin', `<div id='${recipe.id}'
+            class='card'>
+            <header id='${recipe.id}' class='card-header'>
+            <label for='add-button' class='hidden'>Click to add recipe</label>
+            <button id='${recipe.id}' aria-label='add-button' class='add-button card-button'>
+            <img id='${recipe.id}' class='add'
+            src='https://image.flaticon.com/icons/svg/32/32339.svg' alt='Add to
+            recipes to cook'></button>
+            <label for='favorite-button' class='hidden'>Click to favorite recipe
+            </label>
+            <button id='${recipe.id}' aria-label='favorite-button' class='favorite favorite-active card-button'>
+            </button></header>
+            <span id='${recipe.id}' class='recipe-name'>${recipe.name}</span>
+            <img id='${recipe.id}' tabindex='0' class='card-picture'
+            src='${recipe.image}' alt='Food from recipe'>
+            </div>`)
+        })
     }
+}
+
 };
