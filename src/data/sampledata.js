@@ -311,6 +311,58 @@ let sampleRecipeData = [
       "antipasto",
       "hor d'oeuvre"
     ]
+  },
+  {
+    "name": "Slow Cooker Peach Cobbler",
+    "id": 798070,
+    "image": "https://spoonacular.com/recipeImages/798070-556x370.jpg",
+    "ingredients": [
+      {
+        "name": "peaches",
+        "id": 9236,
+        "quantity": {
+          "amount": 20,
+          "unit": "ounces"
+        }
+      },
+      {
+        "name": "unsalted butter",
+        "id": 1145,
+        "quantity": {
+          "amount": 0.25,
+          "unit": "cup"
+        }
+      },
+      {
+        "name": "vanilla ice cream",
+        "id": 1082047,
+        "quantity": {
+          "amount": 5,
+          "unit": "servings"
+        }
+      },
+      {
+        "name": "whipped cream",
+        "id": 11547,
+        "quantity": {
+          "amount": 5,
+          "unit": "servings"
+        }
+      }
+    ],
+    "instructions": [
+      {
+        "number": 1,
+        "instruction": "Melt butter and brush some of the butter around the slow cooker.Using a stand mixer, combine flour, 1-cup sugar, baking powder, and salt. Then, add milk and remaining melted cooled butter, mixing just until dry ingredients are moistened."
+      },
+      {
+        "number": 2,
+        "instruction": "Pour the batter in the slow cooker and place the frozen peaches on top.Cook on high for 3 hours with lid on top. Once the cobbler is done, divide and serve cobbler warm with ice cream and whipped cream on top."
+      }
+    ],
+    "tags": [
+      "side dish"
+    ]
   }
 ]
 let sampleIngredientsData = [

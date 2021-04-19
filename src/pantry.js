@@ -1,8 +1,15 @@
 class Pantry {
-  constructor(userIngredients) {
-    this.contents = userIngredients;
-    //pantry ingredient ids
-    //need ingredients 
+  constructor(userData) {
+    this.contents = userData.pantry;
+    this.ingredientIds;
+    this.needIngredients = [];
+  }
+
+  getPantryIngredientIds() {
+    const idArray = []
+    this.contents.forEach(item => {
+      idArray.push(item.ingredient);
+    });
   }
   //determine user's pantry has enough ingredients to cook meal
   // determine amount missing ingredients needed to cook recipe

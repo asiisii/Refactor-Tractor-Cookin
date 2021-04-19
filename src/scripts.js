@@ -21,16 +21,16 @@ let cardArea = document.querySelector('.all-cards');
 let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
 let userForm = document.querySelector('.form');
-let formArea = document.querySelector('.user-form');
-let formName = document.querySelector('#recipeName');
-let formId = document.querySelector('#recipeId');
-let formImage = document.querySelector('#image');
-let formIngredientName = document.querySelector('#ingredientName');
-let formIngredientId = document.querySelector('#ingredientId');
-let formAmount = document.querySelector('#amount');
-let formUnit = document.querySelector('#unit');
-let formInstructions = document.querySelector('#instructions');
-let submitFormButton = document.querySelector('#recipeButton')
+// let formArea = document.querySelector('.user-form');
+// let formName = document.querySelector('#recipeName');
+// let formId = document.querySelector('#recipeId');
+// let formImage = document.querySelector('#image');
+// let formIngredientName = document.querySelector('#ingredientName');
+// let formIngredientId = document.querySelector('#ingredientId');
+// let formAmount = document.querySelector('#amount');
+// let formUnit = document.querySelector('#unit');
+// let formInstructions = document.querySelector('#instructions');
+// let submitFormButton = document.querySelector('#recipeButton')
 
 window.onload = onStartup();
 
@@ -38,8 +38,8 @@ homeButton.addEventListener('click', returnHome);
 favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
 searchInput.addEventListener('keyup', searchRecipe);
-userForm.addEventListener('click', showUserForm);
-submitFormButton.addEventListener('click', postUserData);
+// userForm.addEventListener('click', showUserForm);
+// submitFormButton.addEventListener('click', postUserData);
 
 function onStartup() {
   apiData()
