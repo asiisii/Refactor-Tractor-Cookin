@@ -35,7 +35,6 @@ const domUpdate = {
     },
 
     getFavorites(user) {
-        console.log(user);
         if (user.favoriteRecipes.length) {
             user.favoriteRecipes.forEach(recipe => {
                 document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active');
@@ -87,7 +86,6 @@ const domUpdate = {
     },
 
     viewFavorites(user) {
-        console.log(user);
         if (cardArea.classList.contains('all')) {
             cardArea.classList.remove('all')
         }
@@ -116,6 +114,22 @@ const domUpdate = {
             src='${recipe.image}' alt='Food from recipe'>
             </div>`)
             })
+        }
+    },
+
+    favoriteCard(event, reciperepo, user) {
+        let specificRecipe = reciperepo.recipes.find(recipe => {
+            if (recipe.id  === Number(event.target.id)) {
+            return recipe;
+            }
+        })
+        if (!event.target.classList.contains('favorite-active')) {
+            event.target.classList.add('favorite-active');
+            favButton.innerHTML = 'View Favorites';
+            user.addToFavorites(specificRecipe);
+        } else if (event.target.classList.contains('favorite-active')) {
+            event.target.classList.remove('favorite-active');
+            user.removeFromFavorites(specificRecipe)
         }
     }
 };

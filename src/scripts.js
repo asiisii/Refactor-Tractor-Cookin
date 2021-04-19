@@ -41,28 +41,12 @@ function onStartup() {
 
 function cardButtonConditionals(event) {
   if (event.target.classList.contains('favorite')) {
-    favoriteCard(event);
+    domUpdate.favoriteCard(event, reciperepo, user);
   } else if (event.target.classList.contains('card-picture')) {
     domUpdate.displayDirections(event);
   } else if (event.target.classList.contains('home')) {
     favButton.innerHTML = 'View Favorites';
     domUpdate.populateCards(reciperepo.recipes, user);
-  }
-}
-
-function favoriteCard(event) {
-  let specificRecipe = reciperepo.recipes.find(recipe => {
-    if (recipe.id  === Number(event.target.id)) {
-      return recipe;
-    }
-  })
-  if (!event.target.classList.contains('favorite-active')) {
-    event.target.classList.add('favorite-active');
-    favButton.innerHTML = 'View Favorites';
-    user.addToFavorites(specificRecipe);
-  } else if (event.target.classList.contains('favorite-active')) {
-    event.target.classList.remove('favorite-active');
-    user.removeFromFavorites(specificRecipe)
   }
 }
 
