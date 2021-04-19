@@ -2,16 +2,11 @@ import { apiData } from './data/fetchedData';
 import RecipeRepository from './recipe-repo';
 import Recipe from './recipe';
 
-
-
 let cardArea = document.querySelector('.all-cards');
 let favButton = document.querySelector('.view-favorites');
 let reciperepo;
 
-
-
 const domUpdate = {
-
     populateCards(recipes, user) {
         cardArea.innerHTML = '';
         if (cardArea.classList.contains('all')) {
@@ -123,7 +118,6 @@ const domUpdate = {
             })
         }
     }
-
 };
 
 export default domUpdate;
