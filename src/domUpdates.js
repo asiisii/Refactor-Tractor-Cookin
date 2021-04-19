@@ -3,12 +3,16 @@ import RecipeRepository from './recipe-repo';
 import Recipe from './recipe';
 
 
+
 let cardArea = document.querySelector('.all-cards');
+let favButton = document.querySelector('.view-favorites');
+let reciperepo;
 
 
 
-export const domUpdate = {
-    populateCards(recipes) {
+const domUpdate = {
+
+    populateCards(recipes, user) {
         cardArea.innerHTML = '';
         if (cardArea.classList.contains('all')) {
         cardArea.classList.remove('all')
@@ -32,12 +36,22 @@ export const domUpdate = {
             src='${recipe.image}' alt='click to view recipe for ${recipe.name}'>
         </div>`)
     });
+    this.getFavorites(user);
+    },
+
+    getFavorites(user) {
+        console.log(user);
+        if (user.favoriteRecipes.length) {
+            user.favoriteRecipes.forEach(recipe => {
+                document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active');
+            })
+        } return
     },
 
     displayDirections(event) {
         apiData()
         .then(data => {
-            let reciperepo = new RecipeRepository(data.recipeData);
+            reciperepo = new RecipeRepository(data.recipeData);
             let newRecipeInfo = reciperepo.recipes.find(recipe => {
                 if (recipe.id === Number(event.target.id)) {
                 return recipe;
@@ -57,7 +71,7 @@ export const domUpdate = {
             let ingredientsSpan = document.querySelector('.ingredients');
             let instructionsSpan = document.querySelector('.instructions');
             recipeObject.ingredients.forEach(ingredient => {
-                let ingredientName = data.ingredientsData.find(ingre => (ingre.id === ingredient.id));
+                let ingredientName = data.ingredientsData.find(food => (food.id === ingredient.id));
                 ingredientsSpan.insertAdjacentHTML('afterbegin', `<ul><li>
                 ${ingredient.quantity.amount.toFixed(2)} ${ingredient.quantity.unit}
                 ${ingredientName.name}</li></ul>
@@ -84,7 +98,7 @@ export const domUpdate = {
         }
         if (!user.favoriteRecipes.length) {
             favButton.innerHTML = 'You have no favorites!';
-            domUpdate.populateCards(reciperepo.recipes);
+            this.populateCards(reciperepo.recipes);
             return
         } else {
             favButton.innerHTML = 'Refresh Favorites'
@@ -106,8 +120,10 @@ export const domUpdate = {
             <img id='${recipe.id}' tabindex='0' class='card-picture'
             src='${recipe.image}' alt='Food from recipe'>
             </div>`)
-        })
+            })
+        }
     }
-}
 
 };
+
+export default domUpdate;
