@@ -1,18 +1,26 @@
 // import users from "./users";
 export const apiData = () => {
-    const users = fetch('http://localhost:3001/api/v1/users')
-        .then(response => response.json())
-        .catch(err => console.log('rejected:', err.message)); 
-    
-    const ingredientsData = fetch('http://localhost:3001/api/v1/ingredients')
-        .then(response => response.json())
-        .catch(err => console.log('rejected:', err.message)); 
-    
-    const recipeData = fetch('http://localhost:3001/api/v1/recipes')
-        .then(response => response.json())
-        .catch(err => console.log('rejected:', err.message)); 
+  const displayErrorMessage = (err) => {
+    const errorField = document.querySelector('.js-error');
+    const message = err.message === 'Failed to fetch' ?
+      'Something went wrong. Please check your internet connection' : err.message;
+    errorField.innerText = message;
+  }
+  
+  const users = fetch('http://localhost:3001/api/v1/users')
+    .then(response => response.json())
+    .catch(err => displayErrorMessage(err)); 
 
-    return Promise.all([recipeData, ingredientsData, users])
+  const ingredientsData = fetch('http://localhost:3001/api/v1/ingredients')
+    .then(response => response.json())
+    .catch(err => displayErrorMessage(err)); 
+
+  const recipeData = fetch('http://localhost:3001/api/v1/recipes')
+    .then(response => response.json())
+    .catch(err => displayErrorMessage(err)); 
+
+
+  return Promise.all([recipeData, ingredientsData, users])
     .then(data => {
         let apiInfo = {};
         apiInfo.recipeData = data[0];
@@ -21,5 +29,6 @@ export const apiData = () => {
         
         return apiInfo;
     })
-    .catch(err => console.log('rejected', err.message));
+    .catch(err => displayErrorMessage(err));
+
 };
