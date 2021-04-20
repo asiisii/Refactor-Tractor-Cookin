@@ -1,10 +1,13 @@
 import { apiData } from './data/fetchedData';
 import RecipeRepository from './recipe-repo';
 import Recipe from './recipe';
+import recipeData from './data/recipes';
 
 let cardArea = document.querySelector('.all-cards');
 let favButton = document.querySelector('.view-favorites');
-let reciperepo;
+let searchInput = document.getElementById('search-input');
+
+let reciperepo, ingredientName;
 
 const domUpdate = {
     populateCards(recipes, user) {
@@ -39,7 +42,7 @@ const domUpdate = {
             user.favoriteRecipes.forEach(recipe => {
                 document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active');
             })
-        } return
+        } else return 
     },
 
     displayDirections(event) {
@@ -65,7 +68,7 @@ const domUpdate = {
             let ingredientsSpan = document.querySelector('.ingredients');
             let instructionsSpan = document.querySelector('.instructions');
             recipeObject.ingredients.forEach(ingredient => {
-                let ingredientName = data.ingredientsData.find(food => (food.id === ingredient.id));
+                ingredientName = data.ingredientsData.find(food => (food.id === ingredient.id));
                 ingredientsSpan.insertAdjacentHTML('afterbegin', `<ul><li>
                 ${ingredient.quantity.amount.toFixed(2)} ${ingredient.quantity.unit}
                 ${ingredientName.name}</li></ul>
@@ -85,13 +88,13 @@ const domUpdate = {
         user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0];
     },
 
-    viewFavorites(user) {
+    viewFavorites(reciperepo, user) {
         if (cardArea.classList.contains('all')) {
             cardArea.classList.remove('all')
         }
         if (!user.favoriteRecipes.length) {
             favButton.innerHTML = 'You have no favorites!';
-            this.populateCards(reciperepo.recipes);
+            this.populateCards(reciperepo.recipes, user);
             return
         } else {
             favButton.innerHTML = 'Refresh Favorites'
@@ -131,7 +134,30 @@ const domUpdate = {
             event.target.classList.remove('favorite-active');
             user.removeFromFavorites(specificRecipe)
         }
+    },
+
+    searchRecipe(reciperepo, user) {
+        // event.preventDefault();
+        apiData()
+        .then(data => {
+            ingredientName = data.ingredientsData.reduce((arr, item) => {
+                data.recipeData.map(recipe => {
+                    recipe.ingredients.map(ingredient => {
+                        if(ingredient.id === item.id && !arr.includes(item.name)) {
+                            arr.push(item.name)
+                        }
+                    })
+                })
+                return arr;
+            },[])
+            cardArea.innerHTML = '';
+            let searchValue = searchInput.value.toLowerCase();
+            let getSearchResults = reciperepo.getRecipe(searchValue, ingredientName);
+            domUpdate.populateCards(getSearchResults, user);
+        });
     }
 };
+
+
 
 export default domUpdate;

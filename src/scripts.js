@@ -17,16 +17,20 @@ let user, pantry, reciperepo;
 
 window.onload = onStartup();
 
-searchInput.addEventListener('keyup', searchRecipe);
 homeButton.addEventListener('click', cardButtonConditionals);
 cardArea.addEventListener('click', cardButtonConditionals);
 favButton.addEventListener('click', function () {
-  domUpdate.viewFavorites(user)
+  domUpdate.viewFavorites(reciperepo, user)
+});
+
+searchInput.addEventListener('keyup', function() {
+  domUpdate.searchRecipe(reciperepo, user)
 });
 
 function onStartup() {
   apiData()
   .then(data => {
+    console.log(data.recipeData);
     reciperepo = new RecipeRepository(data.recipeData);
     let userId = (Math.floor(Math.random() * 49) + 1)
     let newUser = data.users.find(user => {
@@ -50,10 +54,5 @@ function cardButtonConditionals(event) {
   }
 }
 
-function searchRecipe(event) {
-  event.preventDefault();
-  cardArea.innerHTML = '';
-  let searchValue = searchInput.value.toLowerCase();
-  let getSearchResults = reciperepo.getRecipe(searchValue);
-  domUpdate.populateCards(getSearchResults);
-}
+
+
