@@ -52,6 +52,3 @@ function cardButtonConditionals(event) {
     domUpdate.populateCards(reciperepo.recipes, user);
   }
 }
-
-
-

@@ -182,6 +182,17 @@ body {
     background-image: url(https://image.flaticon.com/icons/svg/148/148841.svg);
     background-repeat: no-repeat;
   }
+
+  .js-error {
+    text-align: center;
+    background-color: red;
+    font-size: 4rem;
+    color: white;
+  }
+  .hidden {
+    display: none;
+  }
+
 }
 
 /* *** iPad *** */

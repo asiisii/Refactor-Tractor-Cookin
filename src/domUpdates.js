@@ -1,7 +1,7 @@
 import { apiData } from './data/fetchedData';
 import RecipeRepository from './recipe-repo';
 import Recipe from './recipe';
-import recipeData from './data/recipes';
+
 
 let cardArea = document.querySelector('.all-cards');
 let favButton = document.querySelector('.view-favorites');
@@ -137,7 +137,7 @@ const domUpdate = {
     },
 
     searchRecipe(reciperepo, user) {
-        // event.preventDefault();
+        event.preventDefault();
         apiData()
         .then(data => {
             ingredientName = data.ingredientsData.reduce((arr, item) => {
