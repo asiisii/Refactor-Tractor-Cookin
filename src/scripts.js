@@ -30,7 +30,6 @@ searchInput.addEventListener('keyup', function() {
 function onStartup() {
   apiData()
   .then(data => {
-    console.log(data.recipeData);
     reciperepo = new RecipeRepository(data.recipeData);
     let userId = (Math.floor(Math.random() * 49) + 1)
     let newUser = data.users.find(user => {
@@ -53,6 +52,3 @@ function cardButtonConditionals(event) {
     domUpdate.populateCards(reciperepo.recipes, user);
   }
 }
-
-
-

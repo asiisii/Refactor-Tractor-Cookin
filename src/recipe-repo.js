@@ -10,8 +10,8 @@ class RecipeRepository {
     searchValue.split(' ').forEach(value => 
       this.recipes.filter(recipe => {
         if (recipe.name.toLowerCase().includes(value) 
-        || recipe.ingredients.find(ingredient => 
-          ingredient.name.toLowerCase().includes(value)) 
+        // || recipe.ingredients.find(ingredient => 
+          // ingredient.name.toLowerCase().includes(value)) 
         || recipe.tags.some(tag => tag.includes(value))) {
           if (!storeRecipe.includes(recipe)) {
             storeRecipe.push(recipe)
