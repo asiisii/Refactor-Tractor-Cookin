@@ -137,7 +137,7 @@ const domUpdate = {
     },
 
     searchRecipe(reciperepo, user) {
-        // event.preventDefault();
+        event.preventDefault();
         apiData()
         .then(data => {
             ingredientName = data.ingredientsData.reduce((arr, item) => {
