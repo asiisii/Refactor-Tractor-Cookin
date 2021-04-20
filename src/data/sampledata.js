@@ -363,7 +363,39 @@ let sampleRecipeData = [
     "tags": [
       "side dish"
     ]
-  }
+  }, 
+  {
+    "name": "Cereal Marshmallow Bars",
+    "id": 673337,
+    "image": "https://spoonacular.com/recipeImages/673337-556x370.jpg",
+    "ingredients": [
+      {
+        "name": "balsamic glaze",
+        "id": 11477,
+        "quantity": {
+          "amount": 1,
+          "unit": "servings"
+        }
+      },
+      {
+        "name": "butter",
+        "id": 93820,
+        "quantity": {
+          "amount": 1,
+          "unit": "serving"
+        }
+      }
+    ],
+    "instructions": [
+      {
+        "number": 1,
+        "instruction": "Pour mixture into prepared pan, using your hands press to flatten. Set aside for 1-2 hours to set.In a separate bowl, combine powdered sugar with milk and stir to combine. Using a spoon, drizzle glaze on top of cereal bars and dust with colored sugar or sprinkles."
+      }
+    ],
+    "tags": [
+      "side dish"
+    ]
+  },
 ]
 let sampleIngredientsData = [
   {

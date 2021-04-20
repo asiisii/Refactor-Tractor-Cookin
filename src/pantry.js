@@ -1,12 +1,12 @@
 class Pantry {
   constructor(userData) {
-    this.contents = userData.id.pantry;
+    this.contents = userData.pantry;
     this.pantryIngredientIds = this.getPantryIngredientIds();
     this.neededIngredients = [];
   }
 
   getPantryIngredientIds() {
-    return this.contents.map(item => item.ingredient)
+    return this.contents.map(item => item.ingredient);
   }
 
   compareIngredients(recipe) {
@@ -15,14 +15,24 @@ class Pantry {
         this.neededIngredients.push(ingredient);
       } else {
         let index = this.pantryIngredientIds.indexOf(ingredient.id);
-        if (this.party[index].amount < ingredient.quantity.amount) {
+        if (this.contents[index].amount < ingredient.quantity.amount) {
           this.neededIngredients.push(ingredient);
         }
       }
     })
   }
-  // determine amount missing ingredients needed to cook recipe
-  // remove ingredients used to cook recipe from user's pantry 
+
+  subtractIngredients(recipe) {
+    if (this.neededIngredients.length === 0) {
+      recipe.ingredients.forEach(ingredient => {
+        let index = this.pantryIngredientIds.indexOf(ingredient.id);
+        let ingredientQuantity = ingredient.quantity.amount;
+        let pantryQuantity = this.contents[index].amount;
+        this.contents[index].amount = pantryQuantity - ingredientQuantity;
+      })
+    }
+  }
 }
+
 
 export default Pantry;

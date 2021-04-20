@@ -1,22 +1,21 @@
-import { expect } from 'chai';
+import { expect, use } from 'chai';
 import {sampleRecipeData, sampleIngredientsData, sampleUserData} from '../src/data/sampledata.js';
 import User from '../src/user.js';
-import RecipeRepository from '../src/recipe-repo.js';
 import Pantry from '../src/pantry.js';
 
 describe('Pantry', () => {
   let user;
   let userPantry;
-  let recipeRepository;
   let recipe1;
   let recipe2;
+  let recipe3;
 
   beforeEach(() => {
-    user = new User(sampleUserData[0]);
+    user = new User(sampleUserData[0].id, sampleUserData[0].name, sampleUserData[0].pantry);
     userPantry = new Pantry(user);
-    // recipeRepository = new RecipeRepository(sampleRecipeData);
     recipe1 = sampleRecipeData[2];
     recipe2 = sampleRecipeData[3];
+    recipe3 = sampleRecipeData[4];
   })
   it('should be an instance of Pantry', ()  => {
     expect(userPantry).to.be.an.instanceof(Pantry);
@@ -42,13 +41,16 @@ describe('Pantry', () => {
       {"name": "cherries", "id": 9070, "quantity": {"amount": 15, "unit": "servings"}}
     ])
   })
-  it.only('check ingredients when given a different recipe', () => {
+  it('should be able to check ingredients of a different recipe', () => {
     userPantry.compareIngredients(recipe2);
     expect(userPantry.neededIngredients).to.deep.equal([
       {"name": "peaches", "id": 9236, "quantity": {"amount": 20, "unit": "ounces"}},
       {"name": "unsalted butter", "id": 1145, "quantity": {"amount": 0.25, "unit": "cup"}}
     ])
   })
-  // remove ingredients from pantry when recipe is cooked 
-
+  it('should be able to remove ingredients from pantry when recipe is cooked', () => {
+    userPantry.compareIngredients(recipe3);
+    userPantry.subtractIngredients(recipe3);
+    expect(userPantry.neededIngredients).to.deep.equal([])
+  })
 })
