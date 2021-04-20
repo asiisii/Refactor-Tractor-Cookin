@@ -189,6 +189,12 @@ body {
     background-repeat: no-repeat;
   }
 
+  .js-error {
+    text-align: center;
+    background-color: red;
+    font-size: 4rem;
+    color: white;
+  }
   .hidden {
     display: none;
   }
