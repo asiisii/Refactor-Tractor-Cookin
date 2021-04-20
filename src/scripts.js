@@ -30,14 +30,13 @@ searchInput.addEventListener('keyup', function() {
 function onStartup() {
   apiData()
   .then(data => {
-    console.log(data.recipeData);
     reciperepo = new RecipeRepository(data.recipeData);
     let userId = (Math.floor(Math.random() * 49) + 1)
     let newUser = data.users.find(user => {
       return user.id === Number(userId);
     });
     user = new User(userId, newUser.name, newUser.pantry);
-    pantry = new Pantry(newUser.pantry);
+    pantry = new Pantry(newUser);
     domUpdate.populateCards(reciperepo.recipes, user);
     domUpdate.greetUser(user);
   });
