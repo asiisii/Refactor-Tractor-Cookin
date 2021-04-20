@@ -10,7 +10,6 @@ import User from './user';
 
 import { apiData } from './data/fetchedData';
 // import Cookbook from './cookbook';
-import { postNewData } from './data/postedData';
 
 
 let favButton = document.querySelector('.view-favorites');
@@ -20,26 +19,13 @@ let cardArea = document.querySelector('.all-cards');
 // let cookbook = new Cookbook(recipeData);
 let reciperepo = new RecipeRepository(recipeData);
 let user, pantry;
-let userForm = document.querySelector('.form');
-let formArea = document.querySelector('.user-form');
-let formName = document.querySelector('#recipeName');
-let formId = document.querySelector('#recipeId');
-let formImage = document.querySelector('#image');
-let formIngredientName = document.querySelector('#ingredientName');
-let formIngredientId = document.querySelector('#ingredientId');
-let formAmount = document.querySelector('#amount');
-let formUnit = document.querySelector('#unit');
-let formInstructions = document.querySelector('#instructions');
-let submitFormButton = document.querySelector('#recipeButton')
 
 window.onload = onStartup();
 
-homeButton.addEventListener('click', returnHome);
+homeButton.addEventListener('click', cardButtonConditionals);
 favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
 searchInput.addEventListener('keyup', searchRecipe);
-userForm.addEventListener('click', showUserForm);
-submitFormButton.addEventListener('click', postUserData);
 
 function onStartup() {
   apiData()
@@ -49,7 +35,7 @@ function onStartup() {
       return user.id === Number(userId);
     });
     user = new User(userId, newUser.name, newUser.pantry)
-    pantry = new Pantry(newUser.pantry);
+    pantry = new Pantry(newUser.pantry)
     populateCards(data.recipeData);
     greetUser();
   });
@@ -58,12 +44,12 @@ function onStartup() {
 
 function viewFavorites() {
   if (cardArea.classList.contains('all')) {
-    cardArea.classList.remove('all');
+    cardArea.classList.remove('all')
   }
   if (!user.favoriteRecipes.length) {
     favButton.innerHTML = 'You have no favorites!';
     populateCards(reciperepo.recipes);
-    return;
+    return
   } else {
     favButton.innerHTML = 'Refresh Favorites'
     cardArea.innerHTML = '';
@@ -195,53 +181,4 @@ function searchRecipe(event) {
   let searchValue = searchInput.value.toLowerCase();
   let getSearchResults = reciperepo.getRecipe(searchValue);
   populateCards(getSearchResults);
-}
-
-function showUserForm() {
-  hide(cardArea);
-  show(formArea);
-}
-
-function returnHome() {
-  hide(formArea);
-  show(cardArea);
-}
-
-function show(element) {
-  element.classList.remove('hidden');
-}
-
-function hide(element) {
-  element.classList.add('hidden');
-}
-
-function postUserData() {
-  const postData = {
-    'name': parseInt(formName.value),
-    'id': parseInt(formId.value),
-    'image': parseInt(formImage.value),
-    'ingredients': [
-      {
-        "name": parseInt(formIngredientName.value),
-        "id": parseInt(formIngredientId.value),
-        "quantity": {
-          "amount": parseInt(formAmount.value),
-          "unit": parseInt(formUnit.value),
-        }
-      }
-    ],
-    'instructions': [
-      {
-        'number': 1,
-        'instruction': parseInt(formInstructions.value),
-      }
-    ]
-  }
-
-  postNewData(postData)
-  .then(response => response.json())  
-  .then(json => {
-    postedData.push(json);
-  })
-  .catch(err => console.log('rejected:', err.message));
 }
