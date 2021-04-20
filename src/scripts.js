@@ -36,7 +36,7 @@ function onStartup() {
       return user.id === Number(userId);
     });
     user = new User(userId, newUser.name, newUser.pantry);
-    pantry = new Pantry(newUser.pantry);
+    pantry = new Pantry(newUser);
     domUpdate.populateCards(reciperepo.recipes, user);
     domUpdate.greetUser(user);
   });

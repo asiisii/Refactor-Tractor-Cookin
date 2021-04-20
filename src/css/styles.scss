@@ -1,16 +1,7 @@
-$tan-color: #EBF5EE;
-$black-color: #000;
-
-@mixin border($px) {
-  border: $px solid $black-color;
-}
-@mixin grid($num) {
-  grid-template-columns: repeat($num, 1fr);
-}
+@import '_variables.scss';
 
 html {
   background-color: #37515C;
-  @include border(2px);
 }
 
 body {
@@ -19,7 +10,7 @@ body {
 }
 
 .main-header {
-  background-color: $tan-color;
+  background-color: $header-color;
   display: flex;
   height: auto;
   @include border(2px);
@@ -30,11 +21,14 @@ body {
 /* *** iPhone 5/SE *** */
 @media screen and (min-width: 320px) {
   .navButton {
-    background-color: $tan-color;
+    background-color: $header-color;
     border-left: 1px solid $black-color;
     border-right: 1px solid $black-color;
     font-size: 130%;
     margin: 1%;
+    &:hover {
+      background-color: #cff2da;
+    }
   }
 
   h1 {
@@ -62,18 +56,14 @@ body {
   }
 
   .search-button {
-    background-color: $tan-color;
+    background-color: $header-color;
     @include border(1px);
     height: 58px;
     margin-top: 3px;
     width: 20%;
-  }
-
-  .card-button:hover,
-  .navButton:hover,
-  .search-button:hover,
-  .search-image:hover {
-    background-color: #cff2da;
+    &:hover {
+      background-color: #cff2da;
+    }
   }
 
   .search-image:active,
@@ -96,10 +86,13 @@ body {
     @include border(1px);
     height: 27px;
     margin: 3px;
+    &:hover {
+      background-color: #cff2da;
+    }
   }
 
   .add-button {
-    background-color: $tan-color;
+    background-color: $header-color;
     display: flex;
     width: 12%;
   }
@@ -110,7 +103,7 @@ body {
   }
 
   .favorite {
-    background-color: $tan-color;
+    background-color: $header-color;
     background-image: url(https://image.flaticon.com/icons/svg/149/149222.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -136,7 +129,7 @@ body {
   }
 
   .card-header {
-    background-color: $tan-color;
+    background-color: $header-color;
     border-bottom: 1px solid $black-color;
     display: flex;
     justify-content: space-between;
@@ -149,24 +142,20 @@ body {
 
   .all-recipe-info,
   ol {
-    color: $tan-color;
+    color: $header-color;
     font-size: 220%;
     width: 100%;
   }
 
   h3 {
-    color: $tan-color;
+    color: $header-color;
     font-size: 250%;
   }
 
   .recipe-name {
     display: block;
-    font-size: 150%;
+    font-size: 25px;
     text-align: center;
-  }
-
-  .card-picture:hover {
-    opacity: 0.7;
   }
 
   .card-picture:active {
@@ -176,12 +165,17 @@ body {
   .card-picture {
     @include border(1px);
     margin: 10px 3% 8px 2.6%;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   main {
     background-color: #37515C;
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .favorite-active {
@@ -198,6 +192,7 @@ body {
   .hidden {
     display: none;
   }
+
 }
 
 /* *** iPad *** */
@@ -222,6 +217,11 @@ body {
     height: 200px;
     margin: 10px 3% 8px 2.6%;
   }
+
+  .all {
+    grid-gap: 0px;
+    @include grid(1)
+  }
 }
 
 /* *** Medium Desktop Window*** */
@@ -229,6 +229,11 @@ body {
   .all-cards {
     @include grid(3);
     width: 95.5vw;
+  }
+
+  .all {
+    grid-gap: 0px;
+    @include grid(1)
   }
 }
 
@@ -239,4 +244,56 @@ body {
     padding: 12px;
     justify-items: center;
   }
+
+  .all {
+    grid-gap: 0px;
+    @include grid(1)
+  }
+}
+
+/* *** User Form *** */
+.user-form {
+  background-color: $header-color;
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+  margin-top: 5rem;
+  @include border(1px);
+  font-family: 'Open Sans', sans-serif;
+}
+
+label {
+  font-size: 25px;
+  margin: 0 30px;
+}
+
+input,
+select {
+  height: 2rem;
+  font-size: 16px;
+  margin: 0 30px;
+}
+
+.form-name {
+  margin-top: 30px
+}
+
+.instructions {
+  margin-bottom: 30px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.recipe-button {
+  background-color: $header-color;
+  font-family: 'Open Sans', sans-serif;
+  height: 2.5rem;
+  margin: 0 30px 20px 0;
+  width: 8rem;
+}
+
+.hidden {
+  display: none;
 }

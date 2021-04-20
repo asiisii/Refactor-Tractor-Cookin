@@ -242,7 +242,160 @@ let sampleRecipeData = [
       "main dish",
       "dinner"
     ]
-  }
+  },
+  {
+    "name": "A Cake To Warm Any Heart – Banana Split Cake",
+    "id": 515021,
+    "image": "https://spoonacular.com/recipeImages/515021-556x370.jpg",
+    "ingredients": [
+      {
+        "name": "bananas",
+        "id": 9040,
+        "quantity": {
+          "amount": 4,
+          "unit": ""
+        }
+      },
+      {
+        "name": "butter",
+        "id": 1001,
+        "quantity": {
+          "amount": 1.25,
+          "unit": "sticks"
+        }
+      },
+      {
+        "name": "canned pineapple",
+        "id": 9354,
+        "quantity": {
+          "amount": 1,
+          "unit": "large can"
+        }
+      },
+      {
+        "name": "cherries",
+        "id": 9070,
+        "quantity": {
+          "amount": 15,
+          "unit": "servings"
+        }
+      }
+    ],
+    "instructions": [
+      {
+        "number": 1,
+        "instruction": "Grease a 9×13 pan."
+      },
+      {
+        "number": 2,
+        "instruction": "Mix together graham cracker crust and 1¼ sticks of butter. Press out in pan.In mixer, mix together powdered sugar, 2 sticks of butter, vanilla, and eggs."
+      },
+      {
+        "number": 3,
+        "instruction": "Pour on top of graham cracker crust."
+      },
+      {
+        "number": 4,
+        "instruction": "Spread out crushed pineapple on top of sugar mixture, then add sliced bananas. I added cherries next for fun.In mixer, add heavy cream and mix on medium high until soft peak. When almost completed, add ½ cup sugar."
+      },
+      {
+        "number": 5,
+        "instruction": "Spread whipped cream over top of bananas. Refrigerate for at least 2 hours, (I waited 1 hours and it was fine.)Enjoy!"
+      }
+    ],
+    "tags": [
+      "antipasti",
+      "starter",
+      "snack",
+      "appetizer",
+      "antipasto",
+      "hor d'oeuvre"
+    ]
+  },
+  {
+    "name": "Slow Cooker Peach Cobbler",
+    "id": 798070,
+    "image": "https://spoonacular.com/recipeImages/798070-556x370.jpg",
+    "ingredients": [
+      {
+        "name": "peaches",
+        "id": 9236,
+        "quantity": {
+          "amount": 20,
+          "unit": "ounces"
+        }
+      },
+      {
+        "name": "unsalted butter",
+        "id": 1145,
+        "quantity": {
+          "amount": 0.25,
+          "unit": "cup"
+        }
+      },
+      {
+        "name": "vanilla ice cream",
+        "id": 1082047,
+        "quantity": {
+          "amount": 5,
+          "unit": "servings"
+        }
+      },
+      {
+        "name": "whipped cream",
+        "id": 11547,
+        "quantity": {
+          "amount": 5,
+          "unit": "servings"
+        }
+      }
+    ],
+    "instructions": [
+      {
+        "number": 1,
+        "instruction": "Melt butter and brush some of the butter around the slow cooker.Using a stand mixer, combine flour, 1-cup sugar, baking powder, and salt. Then, add milk and remaining melted cooled butter, mixing just until dry ingredients are moistened."
+      },
+      {
+        "number": 2,
+        "instruction": "Pour the batter in the slow cooker and place the frozen peaches on top.Cook on high for 3 hours with lid on top. Once the cobbler is done, divide and serve cobbler warm with ice cream and whipped cream on top."
+      }
+    ],
+    "tags": [
+      "side dish"
+    ]
+  }, 
+  {
+    "name": "Cereal Marshmallow Bars",
+    "id": 673337,
+    "image": "https://spoonacular.com/recipeImages/673337-556x370.jpg",
+    "ingredients": [
+      {
+        "name": "balsamic glaze",
+        "id": 11477,
+        "quantity": {
+          "amount": 1,
+          "unit": "servings"
+        }
+      },
+      {
+        "name": "butter",
+        "id": 93820,
+        "quantity": {
+          "amount": 1,
+          "unit": "serving"
+        }
+      }
+    ],
+    "instructions": [
+      {
+        "number": 1,
+        "instruction": "Pour mixture into prepared pan, using your hands press to flatten. Set aside for 1-2 hours to set.In a separate bowl, combine powdered sugar with milk and stir to combine. Using a spoon, drizzle glaze on top of cereal bars and dust with colored sugar or sprinkles."
+      }
+    ],
+    "tags": [
+      "side dish"
+    ]
+  },
 ]
 let sampleIngredientsData = [
   {
@@ -286,7 +439,38 @@ let sampleIngredientsData = [
     "estimatedCostInCents": 528
   }
 ]
+
+let sampleUserData = [
+  {
+    "id": 1,
+    "name": "Saige O'Kon",
+    "pantry": [
+      {
+        "ingredient": 11477,
+        "amount": 1
+      },
+      {
+        "ingredient": 93820,
+        "amount": 1
+      },
+      {
+        "ingredient": 11297,
+        "amount": 3
+      },
+      {
+        "ingredient": 11547,
+        "amount": 5
+      },
+      {
+        "ingredient": 1082047,
+        "amount": 5
+      }
+    ]
+  }
+]
+
 export {
   sampleRecipeData, 
-  sampleIngredientsData
+  sampleIngredientsData,
+  sampleUserData 
 }
