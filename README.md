@@ -33,7 +33,7 @@ Mod2 group project at [Turing School of Software and Design](https://turing.io/)
 - User is able to search recipe by recipe name, ingredient, and tag
 - User is able to add/remove ingredients from their pantry
 
-![Favorites and searchbar GIF](https://media.giphy.com/media/xskWxWaJYMdDyF2yGp/giphy.gif)
+[Favorites and searchbar GIF](https://media.giphy.com/media/xskWxWaJYMdDyF2yGp/giphy.gif)
 ---
 
 ## Setup
