@@ -62,7 +62,7 @@ Project is running at http://localhost:8080/
 - [Melanie Daoheuang]("https://github.com/daomeow)
 - [Dustin Harbaugh]("https://github.com/dustin-har)
 ### Project Manager
-- [Hannah Hudson]("https://github.com/hannahhch")
+- [Nik Seif]("https://github.com/hannahhch")
   
 **************************************************************************
 ###### This project was created for [Turing School of Software and Design](https://turing.io/)
