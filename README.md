@@ -17,7 +17,7 @@ Mod2 group project at [Turing School of Software and Design](https://turing.io/)
 - ensure the app is following best practices for accessibility
 - leverage Sass to DRY up the CSS
 - incorporate Webpack to streamline the workflow process
-- View the project [HERE]("https://asiisii.github.io/Refactor-Tractor-Cookin/")
+- View the project [HERE]('https://asiisii.github.io/Refactor-Tractor-Cookin/')
 ---
 
 ## Technologies Used
