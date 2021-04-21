@@ -3,7 +3,6 @@ class Pantry {
     this.contents = userData.pantry;
     this.pantryIngredientIds = this.getPantryIngredientIds();
     this.neededIngredients = [];
-    console.log(this.contents)
   }
 
   getPantryIngredientIds() {
@@ -34,6 +33,5 @@ class Pantry {
     }
   }
 }
-
 
 export default Pantry;
