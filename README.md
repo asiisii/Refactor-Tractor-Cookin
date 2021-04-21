@@ -61,8 +61,8 @@ Project is running at http://localhost:8080/
 ## Contributors
 ### Authors
 - [Ashish Malla]("https://github.com/asiisii")
-- [Melanie Daoheuang]("https://github.com/daomeow)
-- [Dustin Harbaugh]("https://github.com/dustin-har)
+- [Melanie Daoheuang]("https://github.com/daomeow")
+- [Dustin Harbaugh]("https://github.com/dustin-har")
 ### Project Manager
 - [Nik Seif]("https://github.com/hannahhch")
   
