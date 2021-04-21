@@ -44,12 +44,12 @@ describe('Recipe Repository', () => {
       expect(filteredRecipe[0].id).to.be.equal(678353)
     })
   
-    it('should filter by an ingredient and return recipe', () => {
-      filteredRecipe = recipeRepository.getRecipe("all purpose flour")
-      expect(filteredRecipe[0].id).to.be.equal(595736)
-      filteredRecipe = recipeRepository.getRecipe("apples")
-      expect(filteredRecipe[0].id).to.be.equal(678353)
-    })
+    // it('should filter by an ingredient and return recipe', () => {
+    //   filteredRecipe = recipeRepository.getRecipe("all purpose flour")
+    //   expect(filteredRecipe[0].id).to.be.equal(595736)
+    //   filteredRecipe = recipeRepository.getRecipe("apples")
+    //   expect(filteredRecipe[0].id).to.be.equal(678353)
+    // })
 
     it('should be able to see all recipe if NO SEARCH VALUE is given', () => {
       filteredRecipe = recipeRepository.getRecipe(' ')
