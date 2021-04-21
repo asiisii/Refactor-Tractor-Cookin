@@ -18,7 +18,6 @@ Mod2 group project at [Turing School of Software and Design](https://turing.io/)
 - leverage Sass to DRY up the CSS
 - incorporate Webpack to streamline the workflow process
 - View the project [HERE]('https://asiisii.github.io/Refactor-Tractor-Cookin/')
-- ![HERE](https://asiisii.github.io/Refactor-Tractor-Cookin/)
 ---
 
 ## Technologies Used
