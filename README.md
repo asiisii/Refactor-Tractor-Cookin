@@ -32,6 +32,7 @@ Mod2 group project at [Turing School of Software and Design](https://turing.io/)
 - Application is fully responsive from mobile devices - tables - laptops - large monitors 
 - User is able to search recipe by recipe name, ingredient, and tag
 - User is able to add/remove ingredients from their pantry
+
 ![Favorites and searchbar GIF](https://media.giphy.com/media/xskWxWaJYMdDyF2yGp/giphy.gif)
 ---
 
