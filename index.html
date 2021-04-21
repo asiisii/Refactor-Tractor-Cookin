@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <title>Whats Cookin</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap' rel='stylesheet'>
+  </head>
+  <body>
+    <header class='main-header'>
+      <h1>What's Cookin'</h1>
+      <p class='user-info'>Welcome, <span class='user-name'>User</span>.</p>
+      <button id='home-button' class='home navButton' aria-label='Navigates to homepage'>Home</button>
+      <button id='form-button' class='form navButton' aria-label='Navigates to user form'>Add Recipe</button>
+      <button id='view-favorites-button' class=' view-favorites navButton' aria-label='Navigates to favorites page'>View Favorites</button>
+      <button id='viewPantryButton' class=' view-pantry navButton' aria-label='Navigates to pantry page'>View Pantry</button>
+      <form class='search-bar' role='search-recipe'>
+        <input id='search-input' class='search-input' type='text' placeholder='Search recipes by name or ingredients' value=''>
+      </form>
+    </header>
+    <main>
+      <h2 class="js-error"></h2>
+      <section class='all-cards'>
+      </section>
+      <section class='user-form hidden'>
+        <label class='form-name'>Recipe Name:</label><input placeholder='Recipe name' id='recipeName'></input>
+        <label>ID:</label><input placeholder='Recipe ID' id='recipeId'></input>
+        <label>Image URL:</label><input placeholder='Add an image URL' id='image'></input>
+        <label>Ingredients:</label><input placeholder='Name of ingredient' id='ingredientName' id='ingredientName'></input>
+        <input placeholder='Ingredient ID' id='ingredientId'></input>
+        <label>Quantity of Ingredients</label>
+        <input placeholder='Amount' id='amount'></input>
+        <select name='units' id='unit'>
+          <option value="">--Please choose a type of unit--</option>
+          <option value='tablespoon'>tablespoon</option>
+          <option value='teaspoon'>teaspoon</option>
+          <option value='cup'>cup</option>
+          <option value='ounce'>ounce</option>
+          <option value='serving'>serving</option>
+        </select>
+        <label>Instructions:</label><input class='instructions' placeholder='Add instructions' id='instructions'></input>
+        <div class="button-container">
+          <button class="recipe-button" id="recipeButton">Add Recipe</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
